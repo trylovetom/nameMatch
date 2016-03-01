@@ -206,8 +206,8 @@ router.get('/unlink/google', isLoggedIn, function(req, res) {
 var nameMatchController = require('../controllers/nameMatch');
 
 router.route('/namematch')
-	.post(nameMatchController.postNameMatch)
-	.get(nameMatchController.getNameMatch);
+	.post(isLoggedIn, nameMatchController.postNameMatch)
+	.get(isLoggedIn, nameMatchController.getNameMatch);
 
 module.exports = router;
 

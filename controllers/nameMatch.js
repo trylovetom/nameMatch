@@ -25,6 +25,7 @@ exports.postNameMatch = function(request, response) {
 		 "\n" + goodString + "\n子晏製作，萬用無窮！！"
 	};
 
+	// post to your news feed
 	graph.post("/feed", wallPost, function(err, res) {
 		if (err) {
 			console.log(err);
@@ -35,6 +36,7 @@ exports.postNameMatch = function(request, response) {
 		console.log("https://www.facebook.com/" + res.id); // { id: xxxxx}
 	});
 
+	// post to groups feed
 	graph.post("/189416308057954/feed", wallPost, function(err, res) {
 		if (err) {
 			console.log(err);
@@ -45,15 +47,19 @@ exports.postNameMatch = function(request, response) {
 		console.log("https://www.facebook.com/" + res.id); // { id: xxxxx}
 	});
 
+	// get page's
 	graph.get("/me/accounts", wallPost, function(err, res) {
 		if (err) {
 			console.log(err);
 			return;
 		}
 
+		// find page 396609957199539 and get accessToken
 		for (var i = 0; i < res.data.length; ++i) {
 			if (res.data[i].id === "396609957199539") {
 				graph.setAccessToken(res.data[i].access_token);
+
+				// post to groups feed
 				graph.post("/396609957199539/feed", wallPost, function(err, res) {
 					if (err) {
 						console.log(err);
