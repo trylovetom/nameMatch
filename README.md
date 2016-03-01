@@ -1,2 +1,2 @@
-# nameMatch
-Somethings fun things. Get user name match.
+# name match
+Somethings fun. Get user name match and share it to eveybody!!
